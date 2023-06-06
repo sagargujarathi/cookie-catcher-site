@@ -1,0 +1,68 @@
+.main-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 650px;
+    max-width: 550px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-container {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    background-color: #F0F0F0;
+}
+
+.basket {
+    position: absolute;
+    height: 100px;
+    aspect-ratio: 1/1;
+    background-image: url(../images/basket.png);
+    background-position: center;
+    background-size: contain;
+    bottom: 0;
+    left: calc(50% - 50px);
+    transition-duration: 70ms;
+}
+
+.score {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    font-family: fantasy;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+}
+
+.button {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #ACBCFF;
+    border: 2px solid transparent;
+}
+
+.button:hover {
+    background-color: #a5b6fb;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.button img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    aspect-ratio: 1/1;
+}

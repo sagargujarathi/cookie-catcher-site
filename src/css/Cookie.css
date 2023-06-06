@@ -1,0 +1,23 @@
+.cookie {
+    position: absolute;
+    transform: translateY(-50%);
+    background-image: url(../images//cookie.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 50px;
+    top: -10%;
+    aspect-ratio: 1/1;
+    animation-name: cookiemover;
+    animation-timing-function: ease-in;
+}
+
+@keyframes cookiemover {
+    from {
+        top: -10%;
+    }
+
+    to {
+        top: 110%;
+    }
+}
