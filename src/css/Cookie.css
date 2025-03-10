@@ -1,7 +1,6 @@
 .cookie {
     position: absolute;
     transform: translateY(-50%);
-    background-image: url(../images//cookie.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -10,6 +9,23 @@
     aspect-ratio: 1/1;
     animation-name: cookiemover;
     animation-timing-function: ease-in;
+    z-index: 5;
+}
+
+.cookie.regular {
+    background-image: url(/cookie.png);
+}
+
+.cookie.golden {
+    background-image: url(/cookie.png); /* Replace with golden cookie if available */
+    filter: sepia(100%) saturate(400%) brightness(120%);
+    box-shadow: 0 0 10px gold;
+    height: 60px; /* Slightly larger */
+}
+
+.cookie.caught {
+    animation: caught 0.2s forwards;
+    z-index: 15;
 }
 
 @keyframes cookiemover {
@@ -19,5 +35,39 @@
 
     to {
         top: 110%;
+    }
+}
+
+@keyframes caught {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* Add pulse animation for golden cookies */
+.cookie.golden {
+    animation-name: cookiemover, pulse;
+    animation-timing-function: ease-in, ease-in-out;
+    animation-iteration-count: 1, infinite;
+    animation-duration: var(--speed, 2s), 0.8s;
+}
+
+@keyframes pulse {
+    0% {
+        filter: sepia(100%) saturate(400%) brightness(120%);
+        box-shadow: 0 0 5px gold;
+    }
+    50% {
+        filter: sepia(100%) saturate(500%) brightness(150%);
+        box-shadow: 0 0 15px gold;
+    }
+    100% {
+        filter: sepia(100%) saturate(400%) brightness(120%);
+        box-shadow: 0 0 5px gold;
     }
 }

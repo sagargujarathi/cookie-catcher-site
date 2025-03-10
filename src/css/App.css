@@ -17,31 +17,55 @@
     flex-grow: 1;
     overflow: hidden;
     background-color: #F0F0F0;
+    background-image: linear-gradient(to bottom, #A3C7D6, #F0F0F0);
 }
 
 .basket {
     position: absolute;
     height: 100px;
     aspect-ratio: 1/1;
-    background-image: url(../images/basket.png);
+    background-image: url(/basket.png);
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
     bottom: 0;
     left: calc(50% - 50px);
     transition-duration: 70ms;
+    z-index: 10;
 }
 
-.score {
+.stats-container {
     position: absolute;
-    right: 3%;
-    top: 3%;
-    font-family: fantasy;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    z-index: 10;
+}
+
+.score, .high-score, .missed {
+    font-family: fantasy, 'Arial', sans-serif;
+    font-size: 1rem;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    color: #333;
+}
+
+.missed {
+    color: #c00;
 }
 
 .button-container {
     display: flex;
     align-items: center;
     height: 3rem;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .button {
@@ -52,11 +76,19 @@
     align-items: center;
     background-color: #ACBCFF;
     border: 2px solid transparent;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .button:hover {
     background-color: #a5b6fb;
     border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    background-color: #94a5ea;
 }
 
 .button img {
@@ -65,4 +97,94 @@
     background-size: contain;
     height: 100%;
     aspect-ratio: 1/1;
+}
+
+/* Game overlay styles for pause menu */
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.game-message {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.game-message h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.game-message .score-display,
+.game-message .high-score {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.game-message button {
+    margin: 10px;
+    padding: 8px 16px;
+    background-color: #ACBCFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.game-message button:hover {
+    background-color: #94a5ea;
+    transform: scale(1.05);
+}
+
+.game-message button:active {
+    transform: scale(0.98);
+}
+
+@media (max-height: 500px) {
+    .basket {
+        height: 80px;
+        left: calc(50% - 40px);
+    }
+    
+    .button-container {
+        height: 2.5rem;
+    }
+    
+    .stats-container {
+        padding: 5px;
+    }
+    
+    .score, .high-score, .missed {
+        font-size: 0.8rem;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .stats-container {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 5px;
+        background-color: transparent;
+    }
+    
+    .score, .high-score, .missed {
+        margin-bottom: 5px;
+        font-size: 0.8rem;
+    }
 }
